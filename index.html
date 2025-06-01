@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nosso Amor Eterno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Caveat:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Caveat', cursive;
+            background-color: #0f0e17;
+            color: #e7e7e7;
+        }
+        
+        .dancing-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .heart-beat {
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .carousel-item {
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .quote-card {
+            transition: all 0.8s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .quote-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .photo-frame {
+            border: 12px solid #1a1a2e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(232, 93, 117, 0.5);
+        }
+        
+        .rose-petal {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            z-index: 0;
+            animation: falling linear infinite;
+        }
+        
+        @keyframes falling {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .gradient-border {
+            position: relative;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #e85d75, #b91372, #5e0e8b);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0.7;
+        }
+        
+        .next-page-btn {
+            background: linear-gradient(45deg, #e85d75, #b91372);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 93, 117, 0.4);
+            font-family: 'Dancing Script', cursive;
+            margin-top: 20px;
+        }
+        
+        .next-page-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(232, 93, 117, 0.6);
+        }
+        
+        .next-page-btn:active {
+            transform: translateY(1px);
+        }
+        
+        /* Improved image container styling */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (min-width: 768px) {
+            .image-container {
+                padding-bottom: 56.25%; /* 16:9 aspect ratio for larger screens */
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+    <!-- Rose Petals Background -->
+    <div id="petals-container"></div>
+    
+    <!-- Header with Hearts -->
+    <header class="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12 px-4 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-10 left-1/4 text-4xl">❦</div>
+            <div class="absolute top-20 right-1/3 text-3xl">✿</div>
+            <div class="absolute bottom-10 left-1/3 text-5xl">❁</div>
+            <div class="absolute bottom-20 right-1/4 text-3xl">✽</div>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold dancing-font relative z-10 glow-text text-pink-300">Nosso Amor Eterno</h1>
+        <p class="text-xl mt-4 dancing-font relative z-10 text-pink-200">Uma história escrita a cada dia</p>
+        <div class="mt-6 heart-beat text-4xl relative z-10 text-pink-400">❦</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 max-w-6xl relative z-10">
+        <!-- Photo Carousel -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12 dancing-font text-pink-300">Nossos Momentos</h2>
+            
+            <div class="relative overflow-hidden rounded-xl gradient-border">
+                <div id="carousel" class="flex transition-transform duration-700">
+                    <!-- Carousel items will be added by JavaScript -->
+                </div>
+                
+                <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-70 text-pink-300 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-opacity-90 transition-all hover:scale-110">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                
+                <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-70 text-pink-300 w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-opacity-90 transition-all hover:scale-110">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+                
+                <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+                    <!-- Indicators will be added by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Romantic Quotes -->
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-12 dancing-font text-pink-300">Palavras do Coração</h2>
+            
+            <div id="quotesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Quotes will be added by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Love Letter Section -->
+        <section class="mt-20">
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 relative overflow-hidden">
+                <div class="absolute top-0 right-0 text-6xl text-pink-400 opacity-20 pr-4 pt-2">❧</div>
+                <h3 class="text-2xl md:text-3xl font-bold mb-6 dancing-font text-pink-300">Para Minha Amada</h3>
+                <div class="space-y-4 text-gray-300 text-xl">
+                    <p>Meu amor,</p>
+                    <p>Neste Dia dos Namorados, quero lembrar você de como cada momento ao seu lado é especial. Seu sorriso ilumina meus dias, seu amor aquece meu coração e sua presença torna minha vida completa.</p>
+                    <p>Obrigado por ser minha companheira, minha melhor amiga e meu maior amor. Cada dia ao seu lado é uma bênção que eu nunca darei por garantida.</p>
+                    <p>Que possamos continuar escrevendo nossa história de amor por muitos e muitos anos.</p>
+                    <p class="text-right mt-8 text-pink-300 dancing-font">Para sempre seu,</p>
+                    <p class="text-right text-pink-300 dancing-font">[Seu Nome]</p>
+                </div>
+                <div class="flex justify-center mt-10">
+                    <button onclick="window.location.href='pedido.html'" class="next-page-btn dancing-font">
+                        <i class="fas fa-heart mr-2"></i> Próxima Página
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-white py-12 text-center relative">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-1/4 left-1/5 text-4xl">✽</div>
+            <div class="absolute top-1/3 right-1/4 text-3xl">❁</div>
+            <div class="absolute bottom-1/4 right-1/5 text-5xl">✿</div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <p class="dancing-font text-3xl mb-4 text-pink-300">Feliz Dia dos Namorados, Amor!</p>
+            <p class="text-sm opacity-80">Criado com ❦ para eternizar nosso amor</p>
+            <div class="mt-6 flex justify-center gap-6 text-2xl text-pink-400">
+                <i class="fas fa-heart hover:scale-125 transition-transform"></i>
+                <i class="fas fa-heart hover:scale-125 transition-transform"></i>
+                <i class="fas fa-heart hover:scale-125 transition-transform"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Photos and their corresponding quotes
+            const photosWithQuotes = [
+                    {
+                        url: './imagens/img1.jpeg',
+                        alt: 'Casal feliz abraçado',
+                        quotes: [
+                            "Amo você não só pelo que é, mas pelo que eu sou quando estou com você."
+                        ]
+                    },
+                    {
+                        url: './imagens/img2.jpeg',
+                        alt: 'Casal na praia',
+                        quotes: [
+                            "O melhor amor é aquele que desperta a alma e nos faz aspirar por mais."
+                        ]
+                    },
+                    {
+                        url: './imagens/img3.jpeg',
+                        alt: 'Mãos entrelaçadas',
+                        quotes: [
+                            "Com você, aprendi o verdadeiro significado do amor incondicional."
+                        ]
+                    },
+                    {
+                        url: './imagens/img4.jpeg',
+                        alt: 'Casal sorrindo ao pôr do sol',
+                        quotes: [
+                            "O amor verdadeiro não é encontrado, ele é construído."
+                        ]
+                    },
+                    {
+                        url: './imagens/img5.jpeg',
+                        alt: 'Casal dançando sob a chuva',
+                        quotes: [
+                            "No ritmo do nosso amor, até a chuva vira música."
+                        ]
+                    },
+                    {
+                        url: './imagens/img6.jpeg',
+                        alt: 'Casal segurando as mãos em um campo de flores',
+                        quotes: [
+                            "Juntos, florescemos e crescemos lado a lado."
+                        ]
+                    },
+                    {
+                        url: './imagens/img7.jpeg',
+                        alt: 'Casal olhando para as estrelas',
+                        quotes: [
+                            "Nosso amor brilha tão forte quanto as estrelas no céu."
+                        ]
+                    }
+            ];
+
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            let currentIndex = 0;
+
+            // Criar os itens do carrossel
+            photosWithQuotes.forEach((photo, index) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item flex-shrink-0 w-full';
+                item.style.minWidth = '100%';
+
+                item.innerHTML = `
+                    <div class="image-container">
+                        <img src="${photo.url}" alt="${photo.alt}" class="photo-frame" />
+                    </div>
+                `;
+
+                carousel.appendChild(item);
+            });
+
+            // Atualizar o carrossel para mostrar a imagem atual
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateQuotes();
+                updateIndicators();
+            }
+
+            // Atualizar citações relacionadas à foto atual
+            const quotesContainer = document.getElementById('quotesContainer');
+            function updateQuotes() {
+                quotesContainer.innerHTML = '';
+                const currentQuotes = photosWithQuotes[currentIndex].quotes;
+
+                currentQuotes.forEach((quote) => {
+                    const card = document.createElement('div');
+                    card.className = 'quote-card p-6 rounded-xl shadow-lg bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 text-pink-300 italic dancing-font active fade-in';
+                    card.textContent = `"${quote}"`;
+                    quotesContainer.appendChild(card);
+                });
+            }
+
+            // Criar indicadores (bolinhas) do carrossel
+            const indicatorsContainer = carousel.parentElement.querySelector('div.absolute.bottom-6');
+            photosWithQuotes.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'w-4 h-4 rounded-full bg-pink-400 opacity-50 hover:opacity-100 transition-opacity';
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                });
+                indicatorsContainer.appendChild(dot);
+            });
+
+            function updateIndicators() {
+                const dots = indicatorsContainer.querySelectorAll('button');
+                dots.forEach((dot, idx) => {
+                    dot.style.opacity = idx === currentIndex ? '1' : '0.5';
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + photosWithQuotes.length) % photosWithQuotes.length;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % photosWithQuotes.length;
+                updateCarousel();
+            });
+
+            updateCarousel();
+
+            // Criar pétalas de rosa animadas
+            const petalsContainer = document.getElementById('petals-container');
+            const petalsCount = 15;
+            const petalUrl = 'https://cdn-icons-png.flaticon.com/512/616/616408.png'; // Pequena pétala rosa
+
+            for(let i = 0; i < petalsCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'rose-petal';
+                petal.style.width = `${15 + Math.random() * 20}px`;
+                petal.style.height = petal.style.width;
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${10 + Math.random() * 10}s`;
+                petal.style.animationDelay = `${Math.random() * 15}s`;
+                petal.style.backgroundImage = `url(${petalUrl})`;
+                petalsContainer.appendChild(petal);
+            }
+        });
+    </script>
+</body>
+</html>
