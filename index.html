@@ -107,6 +107,16 @@
             border-radius: inherit;
             opacity: 0.7;
         }
+        #quotesContainer {
+            font-size: 1.7rem;
+            text-align: center;
+        }
+        .space-y-4{
+            font-size: 1.5rem;
+            color: rgb(214, 204, 204);
+
+        }
+
         
         .next-page-btn {
             background: linear-gradient(45deg, #e85d75, #b91372);
@@ -114,7 +124,7 @@
             color: white;
             padding: 12px 24px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.7rem;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(232, 93, 117, 0.4);
@@ -159,35 +169,43 @@
                     padding-bottom: 56.25%; /* 16:9 aspect ratio for larger screens */
                 }
             }
-        .midia {
-        position: fixed;
-        top: 5px;
-        left: 85%;
-        transform: translateX(-50%); /* Centraliza horizontalmente */
-        z-index: 1000; /* Garante que fique sobre outros elementos */
-        padding: 5px;
-        box-sizing: border-box;
-        width: 90%; /* Largura relativa */
-        max-width: 300px; /* Limite para telas maiores */
+       .midia {
+    position: fixed;
+    top: 10px;
+    right: 10px; /* Mantém distância da borda direita */
+    z-index: 1000;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 300px;
+}
+
+.midia audio {
+    width: 100%;
+    height: 30px;
+}
+
+/* Responsivo para telas pequenas */
+@media (max-width: 768px) {
+    .midia {
+        width: 90%;
+        right: 5%;
+        left: 59%;
     }
+}
 
-    .midia audio {
-        width: 100%;
-        height: 30px;
+@media (max-width: 480px) {
+    .midia {
+        width: 95%;
+        right: 2.5%;
+        top: 10px;
     }
+}
 
-    /* Ajustes para telas menores */
-    @media (max-width: 480px) {
-        .midia {
-            top: 10px;
-            width: 95%;
-        }
+    .pfooter{
+        font-size: 1.3rem;
+        color: rgb(214, 204, 204);
     }
-
-        
-      
-
-
 
     </style>
 </head>
@@ -249,7 +267,7 @@
         <section>
             <h2 class="text-3xl font-bold text-center mb-12 dancing-font text-pink-300">Palavras do Coração</h2>
             
-            <div id="quotesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="quotesContainer" class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Quotes will be added by JavaScript -->
             </div>
         </section>
@@ -259,7 +277,7 @@
             <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700 relative overflow-hidden">
                 <div class="absolute top-0 right-0 text-6xl text-pink-400 opacity-20 pr-4 pt-2">❧</div>
                 <h3 class="text-2xl md:text-3xl font-bold mb-6 dancing-font text-pink-300">Para Minha Chatonilda</h3>
-                <div class="space-y-4 text-gray-300 text-xl">
+                <div class="space-y-4">
                     <p>Minha chata,</p>
                     <p>Neste Dia dos Namorados, quero lembrar você de como cada momento ao seu lado é especial. Seu sorriso ilumina meus dias, seu amor aquece meu coração e sua presença torna minha vida completa.</p>
                     <p>Obrigado por ser minha companheira, minha melhor amiga e meu maior amor. Cada dia ao seu lado é uma bênção que eu nunca darei por garantida.</p>
@@ -284,8 +302,8 @@
             <div class="absolute bottom-1/4 right-1/5 text-5xl">✿</div>
         </div>
         <div class="container mx-auto px-4 relative z-10">
-            <p class="dancing-font text-3xl mb-4 text-pink-300">Feliz Dia dos Namorados, Amor!</p>
-            <p class="text-sm opacity-80">Criado com ❦ para eternizar nosso amor</p>
+            <p class="dancing-font text-4xl mb-4 text-pink-300">Feliz Dia dos Namorados, Amor!</p>
+            <p class="pfooter">Criado com ❦ para eternizar nosso amor</p>
             <div class="mt-6 flex justify-center gap-6 text-2xl text-pink-400">
                 <i class="fas fa-heart hover:scale-125 transition-transform"></i>
                 <i class="fas fa-heart hover:scale-125 transition-transform"></i>
