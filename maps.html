@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Ponto de Encontro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+    .heart-beat {
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .splide-bottom-center {
+      bottom: -2rem;
+    }
+    .splide-bottom-center .splide__pagination__page {
+      width: 12px;
+      height: 12px;
+      margin: 0 6px;
+    }
+    .splide-bottom-center .splide__pagination__page.is-active {
+      transform: scale(1);
+      opacity: 1;
+      background: #f472b6;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center py-12 px-4">
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <!-- Pre-loader Countdown -->
+  <div id="preloader" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-white transition-opacity duration-1000">
+    <div class="text-center max-w-md px-6">
+      <h2 class="text-3xl font-bold mb-4 animate-pulse">Carregando seu Presente...</h2>
+      <p class="mb-8 text-lg opacity-80">Pronta para uma experiência incrível? A contagem regressiva já começou!</p>
+      <div id="countdown" class="text-6xl font-bold text-pink-500">10</div>
+      <p id="countdown-message" class="mt-4 text-sm opacity-70"></p>
+    </div>
+  </div>
+
+  <!-- Conteúdo oculto -->
+  <div id="content" class="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-purple-500 to-pink-500 p-8 text-center text-white">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">Nosso Encontro Especial ❤️</h1>
+      <div class="flex justify-center items-center">
+        <i class="fas fa-calendar-alt text-xl mr-2"></i>
+        <p class="text-lg md:text-xl font-medium">Espero Que esteja com fome!</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 md:p-8">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Food Gallery Section -->
+        <div class="md:w-2/3">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-utensils text-red-500 mr-2"></i>
+            Norygami - Gastronomia Japonesa
+          </h2>
+          <p class="text-gray-700 mb-6">
+            Um lugar especial com sabores incríveis da culinária japonesa! 
+            Aqui você encontra desde sushis tradicionais até criações exclusivas, 
+            tudo preparado com ingredientes frescos e muito amor.
+          </p>
+          
+          <div class="splide rounded-xl overflow-hidden shadow-lg border-4 border-purple-90">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide">
+                  <img src="imagens/2023-03-04.webp" alt="Sushi Variados" class="w-full h-64 object-cover">
+                </li>
+                <li class="splide__slide">
+                  <img src="imagens/unnamed (1).webp" alt="Temaki" class="w-full h-64 object-cover">
+                </li>
+                <li class="splide__slide">
+                  <img src="imagens/unnamed (2).webp" alt="Sashimi" class="w-full h-64 object-cover">
+                </li>
+                <li class="splide__slide">
+                  <img src="imagens/unnamed (3).webp" alt="Uramaki" class="w-full h-64 object-cover">
+                </li>
+                <li class="splide__slide">
+                  <img src="imagens/unnamed (6).webp" alt="Ramen" class="w-full h-64 object-cover">
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-6 text-center">
+            <a href="https://www.google.com/maps/dir//-22.8902309,-48.4440121/@-22.890231,-48.444012,16z" 
+               target="_blank"
+               class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full inline-flex items-center transition-all">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              Como chegar no Norygami
+            </a>
+          </div>
+        </div>
+
+
+        <!-- Details Section -->
+        <div class="md:w-1/3 bg-purple-50 rounded-xl p-6 flex flex-col">
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold text-purple-700 mb-3 flex items-center">
+              <i class="fas fa-info-circle mr-2"></i>
+              Norygami
+            </h3>
+            <p class="text-gray-700 mb-4">Seu presente esta aqui!</p>
+            <div class="bg-white p-4 rounded-lg shadow">
+              <div class="flex items-start mb-3">
+                <i class="fas fa-map-pin text-purple-500 mt-1 mr-2"></i>
+                <p class="text-gray-800">General Teles, Botucatu - SP</p>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-clock text-purple-500 mt-1 mr-2"></i>
+                <p class="text-gray-800">Estou te esperando!</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-auto">
+            <div class="text-center p-4 bg-pink-100 rounded-lg border border-pink-200">
+              <p class="text-pink-700 font-medium mb-2">Estou com fome, então ande</p>
+              <div class="heart-beat inline-block">
+                <i class="fas fa-heart text-red-500 text-2xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-gray-100 p-6 text-center text-gray-600">
+      <p class="font-medium">Qualquer dúvida, é só me chamar! 😊</p>
+      <div class="flex justify-center space-x-4 mt-3 text-purple-500">
+        <a href="#" class="hover:text-purple-700"><i class="fab fa-whatsapp text-2xl"></i></a>
+        <a href="#" class="hover:text-purple-700"><i class="fas fa-phone-alt text-2xl"></i></a>
+        <a href="#" class="hover:text-purple-700"><i class="fab fa-instagram text-2xl"></i></a>
+      </div>
+    </div>
+  </div>
+<script>
+    const countdownEl = document.getElementById('countdown');
+    const preloader = document.getElementById('preloader');
+    const content = document.getElementById('content');
+
+    const title = document.querySelector('#preloader h2');
+    const subtitle = document.querySelector('#preloader p');
+
+    const messages = {
+        5: "Quase lá... 5 segundos!",
+        4: "Prepare-se... 4 segundos!", 
+        3: "Está ansiosa? 3!",
+        2: "Agora sim! 2!",
+        1: "Último segundo! 1!",
+        0: "Chegou a hora!"
+    };
+
+    let countdownMsg = document.createElement('p');
+    countdownMsg.className = 'mt-2 text-sm italic text-pink-300 animate-bounce';
+    countdownEl.after(countdownMsg);
+
+    // Start playing background music
+   const bgMusic = document.getElementById('bgMusic');
+      bgMusic.volume = 0.2;
+      bgMusic.currentTime = 0.5; // Começa a tocar a partir de 0.5s
+      bgMusic.play();
+
+      setTimeout(() => {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+      }, 25000);
+       
+    let counter = 10;
+    const initialCountdown = setInterval(() => {
+        countdownEl.textContent = counter;
+
+        // Mostrar mensagens de 5 a 0
+        if (counter <= 5 && counter >= 0) {
+            countdownMsg.textContent = messages[counter] || "";
+        }
+
+        if (counter === 0) {
+            clearInterval(initialCountdown);
+            setTimeout(triggerFakeError, 3000); // Espera um segundo antes de mostrar erro
+        }
+
+        counter--;
+    }, 2000);
+
+    function triggerFakeError() {
+        // Substitui os textos principais
+        if (title) title.textContent = "Ops, deu um erro na contagem!";
+        if (subtitle) subtitle.textContent = "Codigo esta muito Pesado.";
+        if (subtitle) subtitle.textContent = "Vamos recomeçar com um tempo maior!";
+
+        // Mensagem de alerta
+        alert("Tivemos muitos erros no codigo! Vamos tentar novamente?");
+        
+        const bgMusic = document.getElementById('bgMusic');
+          bgMusic.volume = 0.2;
+          bgMusic.currentTime = 0.5; // Começa a tocar a partir de 0.5s
+          bgMusic.play();
+
+        setTimeout(() => {
+          bgMusic.pause();
+          bgMusic.currentTime = 0;
+        }, 14000);
+
+        // Começa imediatamente a nova contagem de 100 a 95
+        let fakeCounter = 100;
+        countdownEl.textContent = fakeCounter;
+        countdownMsg.textContent = ""; // limpa mensagens anteriores
+
+        const fakeInterval = setInterval(() => {
+            fakeCounter--;
+            countdownEl.textContent = fakeCounter;
+
+            if (fakeCounter === 95) {
+                clearInterval(fakeInterval);
+                countdownMsg.textContent = "Brincadeirinha!";
+
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.remove();
+                        content.classList.remove('hidden');
+                    }, 2000);
+                }, 2000);
+            }
+        }, 2000);
+    }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+      new Splide('.splide', {
+        type: 'loop',
+        autoplay: true,
+        interval: 3000,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+        rewind: true,
+        arrows: true,
+        pagination: true,
+        speed: 1000,
+        easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+        drag: true,
+        classes: {
+          pagination: 'splide__pagination splide-bottom-center', 
+          page: 'splide__pagination__page bg-pink-400 opacity-50 hover:opacity-100 transition-opacity',
+        }
+      }).mount();
+    }, 1000); // Delay to wait for content reveal
+  });
+</script>
+</body>
+</html>
